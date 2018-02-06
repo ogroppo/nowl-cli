@@ -1,22 +1,19 @@
 {
-  "name": "csv-graph",
-  "version": "1.0.0",
+  "name": "nowl",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "nowl": "./index.js"
+    "nowl": "./cli.js"
   },
-  "author": "",
+  "author": "Orlando Groppo <orlando.groppo@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "ascii-graph": "^0.1.0",
     "chalk": "^2.3.0",
     "fast-csv": "^2.4.1",
-    "isnot": "^0.4.1",
-    "mv": "^2.1.1",
+    "isnot": "^0.5.1",
     "yargs": "^11.0.0"
   }
 }
