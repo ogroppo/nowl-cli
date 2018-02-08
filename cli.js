@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-const chalk = require('chalk')
-
 console.log();
 
 const argv = require('yargs')
@@ -10,5 +8,7 @@ const argv = require('yargs')
 	.command('change <old node> <new node>', "Change node's name", require('./commands/change'))
 	.command('delete <node>', "Delete a node", require('./commands/delete'))
 	.command('graph <node>', "Show a node's graph", require('./commands/graph'))
+	.count('verbose')
+	.alias('v', 'verbose')
 	.demandCommand(1)
   .argv

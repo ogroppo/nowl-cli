@@ -10,10 +10,16 @@ exports.handler = function graphCommand(argv) {
 	let startDate = new Date
 	let rootNode = parseCliNode(argv.node)
 	graphNode(rootNode).then(jsonGraph => {
-		console.info(chalk.green('Your Tree'), `in ${getDateDiffSeconds(startDate)}s`);
 		//console.log(JSON.stringify(jsonGraph, null, 2))
-		asciiGraph(jsonGraph)
-	}).catch(e => console.info(e))
+		if(!jsonGraph){
+			console.log(chalk.yellow("Graph not found for"), argv.node);
+			console.log();
+		}else{
+			asciiGraph(jsonGraph, argv)
+		}
+	}).catch(e =>
+		console.info(e)
+	)
 }
 
 exports.builder = {}

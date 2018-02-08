@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+const {isArray} = require('isnot')
 
 const setPattern = require('../lib/setPattern')
 const setNode = require('../lib/setNode')
@@ -18,17 +19,19 @@ exports.handler = function (argv) {
 			rel = {}
 			child = parseCliNode(argv.rel)
 		}
-		setPattern(nodeToSet, rel, child).then(returnedPattern => {
-			console.info(chalk.green("Pattern set!"))
-			console.info()
-			console.info(formatPattern(returnedPattern.node, returnedPattern.rel, returnedPattern.child))
+		setPattern(nodeToSet, rel, child).then(setPatternResult => {
+			if(isArray(setPatternResult)){
+				setPatternResult.forEach((pattern)=>{
+					console.info(formatPattern({node: pattern.node, rel: pattern.rel, child: pattern.child}, argv))
+				})
+			}else{
+				console.info(formatPattern({node: setPatternResult.node, rel: setPatternResult.rel, child: setPatternResult.child}, argv))
+			}
 			console.info()
 		}).catch(e => console.info(e))
 	}else{
 		setNode(nodeToSet).then(returnedNode => {
-			console.info(chalk.green("Node set!"))
-			console.info()
-			console.info(formatNode(returnedNode))
+			console.info(formatNode(returnedNode, argv))
 			console.info()
 		}).catch(e => console.info(e))
 	}
