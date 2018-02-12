@@ -5,6 +5,7 @@ module.exports = [
 	"date",
 	"value",
 	"place",
+	"url",
 	"createdAt",
 	"updatedAt"
 ];

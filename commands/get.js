@@ -1,9 +1,9 @@
 const chalk = require('chalk')
+const {isArray} = require('isnot')
 
 const parseCliNode = require('../lib/parseCliNode')
 const parseCliRel = require('../lib/parseCliRel')
 const getNode = require('../lib/getNode')
-const getNodes = require('../lib/getNodes')
 const getPattern = require('../lib/getPattern')
 const formatNode = require('../lib/formatNode')
 const formatPattern = require('../lib/formatPattern')
@@ -37,28 +37,24 @@ exports.handler = function (argv) {
 			}
 		}).catch(e => console.info(e))
 	}else{
-		if(nodeToGet.name || nodeToGet.id){
-			getNode(nodeToGet).then(returnedNode => {
-				if(!returnedNode){
+		getNode(nodeToGet).then(getNodeResult => {
+			if(isArray(getNodeResult)){
+				if(!getNodeResult.length){
+					console.info(chalk.yellow("No results"))
+				}else{
+					console.log(chalk.green(`${getNodeResult.length} ${pluralize('result', getNodeResult.length)}`))
+					console.log()
+					getNodeResult.forEach(node => console.log(formatNode(node, argv)))
+				}
+			}else{
+				if(!getNodeResult){
 					console.info(chalk.yellow("Not found"))
 				}else{
-					console.info(formatNode(returnedNode, argv))
+					console.info(formatNode(getNodeResult, argv))
 				}
-				console.log();
-			}).catch(e => console.error(e))
-		} else {
-			getNodes(nodeToGet).then(({returnedNodes}) => {
-				if(!returnedNodes){
-					console.info(chalk.yellow("No results"))
-					console.log();
-				}else{
-					console.log(chalk.green(`${returnedNodes.length} ${pluralize('result', returnedNodes.length)}`));
-					console.log();
-					returnedNodes.forEach(node => console.log(formatNode(node, argv)))
-					console.log();
-				}
-			}).catch(e => console.error(e))
-		}
+			}
+			console.log();
+		}).catch(e => console.error(e))
 	}
 }
 

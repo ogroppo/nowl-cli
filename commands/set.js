@@ -10,6 +10,7 @@ const formatPattern = require('../lib/formatPattern')
 
 exports.handler = function (argv) {
 	let nodeToSet = parseCliNode(argv.node)
+	nodeToSet.domain = argv.domain
 	var rel, child
 	if(argv.rel){
 		if(argv.child){
@@ -30,12 +31,11 @@ exports.handler = function (argv) {
 			console.info()
 		}).catch(e => console.info(e))
 	}else{
-		setNode(nodeToSet).then(returnedNode => {
+		setNode(nodeToSet, argv).then(returnedNode => {
 			console.info(formatNode(returnedNode, argv))
 			console.info()
 		}).catch(e => console.info(e))
 	}
 }
 
-exports.builder = {
-}
+exports.builder = {}

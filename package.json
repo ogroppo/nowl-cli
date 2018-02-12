@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava -v"
   },
   "bin": {
     "nowl": "./cli.js"
@@ -14,6 +14,10 @@
     "chalk": "^2.3.0",
     "fast-csv": "^2.4.1",
     "isnot": "^0.5.1",
+    "moment": "^2.20.1",
     "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0"
   }
 }
