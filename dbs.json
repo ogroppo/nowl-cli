@@ -1,8 +1,0 @@
-{
-	"default-csv-domain": {
-		"type": "csv"
-	},
-	"nowl": {
-		"type": "mongo"
-	}
-}

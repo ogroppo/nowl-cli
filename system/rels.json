@@ -1,0 +1,22 @@
+{
+	"rels": [
+		{
+			"id": 1,
+			"start": 1,
+			"end": 4,
+			"domain": "orlando.groppo@gmail.com"
+		},
+		{
+			"id": 2,
+			"start": 1,
+			"end": 3,
+			"domain": "orlando.groppo@gmail.com"
+		},
+		{
+			"id": 3,
+			"start": 2,
+			"end": 4,
+			"domain": "orlando.groppo@gmail.com"
+		}
+	]
+}

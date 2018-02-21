@@ -1,7 +1,7 @@
 module.exports = [
 	"id",
 	"type",
-	"name",
+	"domain",
 	"start",
 	"startLabel",
 	"end",
