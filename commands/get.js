@@ -1,14 +1,14 @@
 const chalk = require('chalk')
 const {isArray} = require('isnot')
 
-const parseCliNode = require('../lib/parseCliNode')
-const parseCliRel = require('../lib/parseCliRel')
-const getNode = require('../lib/getNode')
-const getPattern = require('../lib/getPattern')
-const formatNode = require('../lib/formatNode')
-const formatPattern = require('../lib/formatPattern')
+const parseCliNode = require('$lib/parseCliNode')
+const parseCliRel = require('$lib/parseCliRel')
+const getNode = require('$lib/csv/getNode')
+const getPattern = require('$lib/csv/getPattern')
+const formatNode = require('$lib/formatNode')
+const formatPattern = require('$lib/formatPattern')
 
-const pluralize = require('../helpers/pluralize')
+const pluralize = require('$helpers/pluralize')
 
 exports.handler = function (argv) {
 	let nodeToGet = parseCliNode(argv.node)
