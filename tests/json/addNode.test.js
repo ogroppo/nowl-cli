@@ -9,6 +9,7 @@ test('json addNode', t => {
 	let node = addNode({name: name}, {test: true});
 	t.is(node.name, name);
 	t.is(node.id, 1);
+	t.truthy(node.createdAt);
 	let name2 = 'new test node other name';
 	let node2 = addNode({name: name2}, {test: true});
 	t.is(node2.name, name2);

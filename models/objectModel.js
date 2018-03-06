@@ -1,11 +1,14 @@
 module.exports = {
 	"id": {
-		"type": Number
+		"type": 'Positive'
 	},
 	"uuid": {
-		"type": String
+		"type": 'UUID'
 	},
 	"createdAt": {
-		"type": Date
+		"type": 'ISOString'
+	},
+	"updatedAt": {
+		"type": 'ISOString'
 	}
 }

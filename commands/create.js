@@ -1,16 +1,20 @@
+const chalk = require('chalk')
+const md5 = require('md5')
+const system = require('../lib/fluent-nowledge/system')
+
 exports.handler = function createCommand(argv) {
 
-	var domains = require('../domains')
-
-	if(domains[argv.domain])
-		console.error("Domain exists already");
+	var domain = system('domains').get(argv.domain).one()
+	if(domain)
+		return console.error(chalk.red("Domain exists already"), domain.name);
 	else {
-		createDomain(argv.domain)
+		var userPassword = system(argv.email).get(md5(argv.password), ["PW Hash"]).one()
+		if(!userPassword)
+			return console.log(chalk.red(`User does not exist`))
+
+		domain = system('domains').set(argv.domain, ['Domain']).of(argv.email, {domain: 'www'}).one()
+		return console.log(chalk.green("Domain created"), domain.name);
 	}
 }
 
 exports.builder = {}
-
-function createDomain(domainName){
-	var domains = require('../domains')
-}

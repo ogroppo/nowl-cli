@@ -1,25 +1,25 @@
 const chalk = require('chalk');
 const md5 = require('md5');
 
-const system = require('../lib/json/system')
+const system = require('../lib/fluent-nowledge/system')
 const interface = require('../shell/interface')
 
 exports.handler = function connectCommand(argv) {
 
-	var email = system().get({name: argv.email, domain: 'www'}).node()
+	var email = system('www').get(argv.email).one()
 	if(email)
 		return console.log(chalk.red("Email already exists"))
 
-	system().set({name: argv.email, labels: ["Email"], domain: 'www'}).run()
-	system().set({hash: md5(argv.password), labels: ["PW Hash"], domain: argv.email}).run()
+	system('www').set(argv.email, ["Email"]).run()
+	system(argv.email).set(md5(argv.password), ["PW Hash"]).run()
 
 	let username = argv.username;
 	if(!argv.username)
 		username = argv.email.slice(0, argv.email.indexOf('@'))
 
-	var user = system().set({name: username, labels: ["User"], domain: argv.email}).node()
+	var user = system(argv.email).set(username, ["User"]).one()
 
-	return console.log(chalk.green(`Welcome ${user.name}`))
+	return console.log(chalk.green('Welcome'), user.name)
 }
 
 exports.builder = {}

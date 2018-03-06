@@ -1,6 +1,12 @@
 [
   {
-    "name": "test node name",
-    "id": 1
+    "name": "test node",
+    "id": 1,
+    "createdAt": "2018-03-05T17:15:37.689Z"
+  },
+  {
+    "name": "test parent",
+    "id": 2,
+    "createdAt": "2018-03-05T17:15:37.692Z"
   }
 ]

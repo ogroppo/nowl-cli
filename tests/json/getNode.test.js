@@ -4,7 +4,7 @@ var addNode = require('../../lib/json/addNode')
 var getNode = require('../../lib/json/getNode')
 var resetAllNodes = require('../../lib/json/resetAllNodes')
 
-test('system getNode', t => {
+test('json getNode', t => {
 	resetAllNodes({test: true})
 	let name = 'test node name';
 	addNode({name: name}, {test: true})
