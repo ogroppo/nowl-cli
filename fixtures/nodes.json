@@ -1,12 +1,14 @@
 [
   {
-    "name": "test node",
+    "name": "nodeNameTest",
     "id": 1,
-    "createdAt": "2018-03-05T17:15:37.689Z"
+    "createdAt": "2018-03-10T12:56:03.558Z"
   },
   {
-    "name": "test parent",
+    "labels": [
+      "one"
+    ],
     "id": 2,
-    "createdAt": "2018-03-05T17:15:37.692Z"
+    "createdAt": "2018-03-10T12:56:03.558Z"
   }
 ]

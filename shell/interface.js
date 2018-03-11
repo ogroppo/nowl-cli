@@ -27,7 +27,7 @@ module.exports = function interface(user, domain){
 			if(shellCommands[command]){
 				shellCommands[command].action()
 			}else{
-				evalLine(line, content({domain: domain.name}))
+				evalLine(line, content({domain: domain.name, driver: domain.driver}))
 				rl.prompt();
 			}
 	}).on('close',function(){

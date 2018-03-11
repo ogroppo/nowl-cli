@@ -12,7 +12,7 @@ exports.handler = function createCommand(argv) {
 		if(!userPassword)
 			return console.log(chalk.red(`User does not exist`))
 
-		domain = system('domains').set(argv.domain, ['Domain']).of(argv.email, {domain: 'www'}).one()
+		domain = system('domains').set(argv.domain, ['Domain'], {driver: 'json'}).of(argv.email, {domain: 'www'}).one()
 		return console.log(chalk.green("Domain created"), domain.name);
 	}
 }
