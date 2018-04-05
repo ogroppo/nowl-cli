@@ -1,8 +1,8 @@
 const chalk = require('chalk')
 const md5 = require('md5')
-const system = require('../lib/fluent-nowledge/system')
 
 exports.handler = function createCommand(argv) {
+	const system = require('fluent-nowledge/system')
 
 	var domain = system('domains').get(argv.domain).one()
 	if(domain)

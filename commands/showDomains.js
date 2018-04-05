@@ -1,8 +1,8 @@
 const chalk = require('chalk')
 const md5 = require('md5')
-const system = require('../lib/fluent-nowledge/system')
 
 exports.handler = function showDomainsCommand(argv) {
+	const system = require('fluent-nowledge/system')
 	var userPassword = system(argv.email).get(md5(argv.password), ["PW Hash"]).one()
 	if(!userPassword)
 		return console.log(chalk.red(`User does not exist`))

@@ -6,16 +6,25 @@ get(['user']).return()
 		{id: 1, labels: ['user']},
 		{id: 2, labels: ['user']}
 	]
+//cli
+	`(1)[user]`
+	`(2)[user]`
 
 get(['user']).first()
 {id: 1, labels: ['user']}
 
-get(['user']).return().string()
-`(1)[user]`
-`(2)[user]`
+get(['user']).last()
+{id: 2, labels: ['user']}
 
 get('name').of('parentName').return()
 	{name: 'name'}
+
+get('name').of('parentName').delete()
+	{name: 'name'}
+
+get('name').of('parentName').deletePattern()
+
+get('name').of('parentName').deletePath()
 
 get('name').of('parentName').having('cousinName').pattern()
 [
@@ -23,7 +32,8 @@ get('name').of('parentName').having('cousinName').pattern()
 	{name: 'parentName', rel: {id: 1}}
 	{name: 'cousinName', rel: {id: 2}}
 ]
-'(1)name <=(1)= (2)parentName =(2)=> (3)cousinName' //in cli
+//in cli
+'(1)name <=(1)= (2)parentName =(2)=> (3)cousinName'
 
 get('name').descending('granPName').path()
 [
@@ -40,6 +50,15 @@ get('granPName').ascending('name').path()
 
 get('name').of('parentName').having('cousinName').tree()
 { name: 'name', parents: [ {id: 2, name: 'parentName', rel: {id: 1}} ]}
+'(2)parentName -(1)-> *(1)name'
+
+get('name').graph()
+{
+	name: 'name'
+	parents: [
+		{depth: 1, id: 2, name: 'parentName', rel: {id: 1}}
+	]
+}
 '(2)parentName -(1)-> *(1)name'
 
 get('name').of(['parentLabel']).having('cousinName').pattern()

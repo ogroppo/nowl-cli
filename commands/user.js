@@ -2,9 +2,9 @@ const chalk = require('chalk');
 const md5 = require('md5');
 const moment = require('moment');
 
-const system = require('../lib/fluent-nowledge/system')
 
 exports.handler = function userCommand(argv) {
+	const system = require('fluent-nowledge/system')
 
 	var userPassword = system(argv.email).get(md5(argv.password), ["PW Hash"]).one()
 	if(!userPassword)

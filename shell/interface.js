@@ -1,5 +1,4 @@
 const readline = require('readline');
-const content = require('../lib/fluent-nowledge/content');
 const shellCommands = {
 	"quit": { action: ()=>process.exit(0) },
 	"exit": { action: ()=>process.exit(0) },
@@ -8,11 +7,12 @@ const shellCommands = {
 }
 
 module.exports = function interface(user, domain){
+	const content = require('fluent-nowledge/content');
+
 	var stdin = process.openStdin();
 
-	stdin.addListener("data", function(char) {
+	stdin.addListener("data", function(char) {});
 
-	});
 	const rl = readline.createInterface({
 		input: process.stdin,
 		output: process.stdout
